@@ -20,7 +20,7 @@ const projects: Project[] = [
     title: "Blockchain",
     description:
       "A basic cryptocurrency built from scratch with Python, featuring mining, peer-to-peer transaction validation, and a Proof of Work algorithm. Includes Flask-powered backend and decentralized ledger.",
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/blockchain_project.svg?height=600&width=800",
     demoUrl: "#",
     githubUrl: "https://github.com/Timatoot/Blockchain",
     tags: ["Flask", "Python", "Blockchain", "PoW"],
@@ -30,7 +30,7 @@ const projects: Project[] = [
     title: "Snowballer - Top Down Shooter",
     description:
       "A Unity-based arcade shooter game with dynamic enemy AI, collision detection, and power-ups. Focuses on responsive controls, fun gameplay, and performance optimization.",
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/Game.svg?height=600&width=800",
     demoUrl: "#",
     githubUrl: "https://github.com/Timatoot/Snowballer",
     tags: ["Unity", "C#", "AI", "Game Development"],
@@ -40,7 +40,7 @@ const projects: Project[] = [
     title: "Note Management App",
     description:
       "A user-friendly note app built in C# with MongoDB for persistent cloud storage. Features include data serialization, search, and organized note management with an intuitive interface.",
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/note_manager_project.svg?height=600&width=800",
     demoUrl: "#",
     githubUrl: "https://github.com/Timatoot/NoteTakingApp",
     tags: ["C#", "MongoDB", ".NET", "Data Serialization"],
@@ -50,7 +50,7 @@ const projects: Project[] = [
     title: "Expense Organizer",
     description:
       "A web-based tool to help users track spending, plan budgets, and manage income. Developed with Flask and Python, featuring clean UI and category-based analytics.",
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/finance_planner_project.svg?height=600&width=800",
     demoUrl: "#",
     githubUrl: "https://github.com/Timatoot/Expense-Organizer",
     tags: ["Flask", "Python", "Web App", "Finance"],
@@ -70,7 +70,7 @@ const projects: Project[] = [
     title: "Scientific Calculator",
     description:
       "A clean, multi-function calculator built to handle basic arithmetic and scientific operations. Designed with an intuitive UI and precise input handling.",
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/calculator_project.svg?height=600&width=800",
     demoUrl: "#",
     githubUrl: "https://github.com/Timatoot/Calculator",
     tags: ["Java", "Swing", "GUI", "Desktop App"],
