@@ -62,7 +62,7 @@ const projects: Project[] = [
       "An interactive and stylish portfolio to showcase my skills, projects, and experience.",
     image: "/placeholder.svg?height=600&width=800",
     demoUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/Timatoot/portfolio",
     tags: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
   },
   {
