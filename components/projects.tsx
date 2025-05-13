@@ -60,7 +60,7 @@ const projects: Project[] = [
     title: "Personal Portfolio Website",
     description:
       "An interactive and stylish portfolio to showcase my skills, projects, and experience.",
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/portfolio_project.svg?height=600&width=800",
     demoUrl: "#",
     githubUrl: "https://github.com/Timatoot/portfolio",
     tags: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
