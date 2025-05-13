@@ -188,7 +188,7 @@ export default function About() {
           className="mt-8 flex justify-center"
         >
           <a
-            href="/resume.pdf"
+            href="/tim_rostorhuiev_resume.pdf"
             download
             className="flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 px-6 py-3 rounded-lg border border-zinc-700 transition-colors group"
           >

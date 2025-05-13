@@ -117,7 +117,7 @@ export default function Hero() {
                 View my work
               </button>
               <a
-                href="/resume.pdf"
+                href="/tim_rostorhuiev_resume.pdf"
                 download
                 className="bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-full transition-colors flex items-center gap-2"
               >
