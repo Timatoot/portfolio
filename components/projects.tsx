@@ -30,7 +30,7 @@ const projects: Project[] = [
     title: "Snowballer - Top Down Shooter",
     description:
       "A Unity-based arcade shooter game with dynamic enemy AI, collision detection, and power-ups. Focuses on responsive controls, fun gameplay, and performance optimization.",
-    image: "/Game.svg?height=600&width=800",
+    image: "/game_project.svg?height=600&width=800",
     demoUrl: "#",
     githubUrl: "https://github.com/Timatoot/Snowballer",
     tags: ["Unity", "C#", "AI", "Game Development"],
