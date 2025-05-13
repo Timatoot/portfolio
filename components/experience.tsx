@@ -19,7 +19,7 @@ const experiences: ExperienceItem[] = [
     id: 1,
     role: "Software Lead",
     company: "Trojans FIRST Robotics",
-    period: "Sep 2021 - June 2024",
+    period: "Sep 2021 - Jun 2024",
     description: "Led a programming team of 12 students, overseeing development and implementation of robot control systems.",
     responsibilities: [
       "Developed embedded systems for robot control",
