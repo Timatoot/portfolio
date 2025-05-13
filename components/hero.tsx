@@ -133,7 +133,7 @@ export default function Hero() {
             className="flex-1 flex justify-center"
           >
             <motion.div
-              className="relative w-64 h-64 md:w-80 md:h-80 overflow-hidden rounded-lg"
+              className="relative w-72 h-[20rem] md:w-96 md:h-[30rem] overflow-hidden rounded-lg"
               animate={{
                 x: calcMovement(-15, "x"),
                 y: calcMovement(-15, "y"),
@@ -144,8 +144,8 @@ export default function Hero() {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-pink-600/20 to-transparent rounded-lg"></div>
               <Image
-                src="/placeholder.svg?height=320&width=320"
-                alt="Your portrait"
+                src="/portrait.svg?height=640&width=384"
+                alt="Portrait"
                 fill
                 className="object-cover"
                 priority
