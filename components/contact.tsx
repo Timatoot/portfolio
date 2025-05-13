@@ -273,7 +273,9 @@ export default function Contact() {
                   className="p-4 bg-green-500/20 border border-green-500 rounded-lg flex items-center"
                 >
                   <Check size={20} className="text-green-500 mr-2" />
-                  <p>Your message has been sent successfully!</p>
+                  <p>Uh oh! The contact page is currently under construction, however feel free to directly email me! </p>
+                  {/*TODO: change the under construction to success*/}
+                  {/*<p>Your message has been sent successfully!</p>*/}
                 </motion.div>
               )}
 
