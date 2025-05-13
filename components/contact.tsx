@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { Check, AlertCircle, Send, Mail, Phone, MapPin, Github } from "lucide-react"
+import { sendContactEmail } from "@/actions/contact-form"
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
@@ -18,6 +19,7 @@ type FormData = z.infer<typeof formSchema>
 
 export default function Contact() {
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
+  const [errorMessage, setErrorMessage] = useState<string>("")
 
   const {
     register,
@@ -31,19 +33,10 @@ export default function Contact() {
   const onSubmit = async (data: FormData) => {
     setFormStatus("submitting")
 
-    //TODO: Add your email sending logic here
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500))
+      const result = await sendContactEmail(data)
 
-      // In a real app, you would send the data to your backend
-      // const response = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(data),
-      // })
-
-      // if (!response.ok) throw new Error('Failed to send message')
+      if (result.success) {
 
       setFormStatus("success")
       reset()
@@ -52,12 +45,24 @@ export default function Contact() {
       setTimeout(() => {
         setFormStatus("idle")
       }, 5000)
+      } else {
+        setFormStatus("error")
+        setErrorMessage(result.message)
+
+        // Reset error message after 5 seconds
+        setTimeout(() => {
+          setFormStatus("idle")
+          setErrorMessage("")
+        }, 5000)
+      }
     } catch (error) {
       setFormStatus("error")
+      setErrorMessage("There was an unexpected error. Please try again later.")
 
       // Reset error message after 5 seconds
       setTimeout(() => {
         setFormStatus("idle")
+        setErrorMessage("")
       }, 5000)
     }
   }
@@ -273,9 +278,7 @@ export default function Contact() {
                   className="p-4 bg-green-500/20 border border-green-500 rounded-lg flex items-center"
                 >
                   <Check size={20} className="text-green-500 mr-2" />
-                  <p>Uh oh! The contact page is currently under construction, however feel free to directly email me! </p>
-                  {/*TODO: change the under construction to success*/}
-                  {/*<p>Your message has been sent successfully!</p>*/}
+                  <p>Your message has been sent successfully!</p>
                 </motion.div>
               )}
 
@@ -286,7 +289,7 @@ export default function Contact() {
                   className="p-4 bg-red-500/20 border border-red-500 rounded-lg flex items-center"
                 >
                   <AlertCircle size={20} className="text-red-500 mr-2" />
-                  <p>There was an error sending your message. Please try again.</p>
+                  <p>{errorMessage || "There was an error sending your message. Please try again."}</p>
                 </motion.div>
               )}
             </form>
