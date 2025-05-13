@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Tim Rostorhuiev | Portfolio",
   description: "Personal portfolio website showcasing my projects and skills",
   icons: {
-    icon: [{ url: "/favicon.ico" }],
+    icon: [{ url: "/favicon.png" }],
   },
 }
 
@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <link rel="icon" href="/favicon.ico" type="image/ico" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
