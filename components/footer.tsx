@@ -1,11 +1,14 @@
 "use client"
 
-import { Github, Mail } from "lucide-react"
+import type React from "react"
+
+import { Github, Mail, Check } from "lucide-react"
 import { useEffect, useState } from "react"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
   const [email, setEmail] = useState("")
+  const [copied, setCopied] = useState(false)
 
   // Email obfuscation
   useEffect(() => {
@@ -15,25 +18,47 @@ export default function Footer() {
     setEmail(`${username}@${domain}`)
   }, [])
 
+  const copyEmail = async (e: React.MouseEvent) => {
+    e.preventDefault()
+    if (!email) return
+
+    try {
+      await navigator.clipboard.writeText(email)
+      setCopied(true)
+
+      // Reset copied state after 2 seconds
+      setTimeout(() => {
+        setCopied(false)
+      }, 2000)
+    } catch (err) {
+      console.error("Failed to copy email: ", err)
+    }
+  }
+
   return (
     <footer className="bg-black py-6 text-center text-white">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center gap-6 mb-4">
-          {/* Obfuscated Email */}
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault()
-              window.location.href = `mailto:${email}`
-            }}
-            className="flex items-center text-white hover:text-pink-600 transition-colors"
-            aria-label="Email me"
-          >
-            <Mail size={18} className="mr-2" />
-            <span data-email-username="tim.rostorhuiev" data-email-domain="gmail.com">
-              {email || "tim.rostorhuiev" + String.fromCharCode(64) + "gmail.com"}
-            </span>
-          </a>
+          <div className="relative">
+            <button
+              onClick={copyEmail}
+              className="flex items-center text-white hover:text-pink-600 transition-colors group"
+              aria-label="Copy email address"
+            >
+              <Mail size={18} className="mr-2" />
+              <span data-email-username="tim.rostorhuiev" data-email-domain="gmail.com">
+                {email || "tim.rostorhuiev" + String.fromCharCode(64) + "gmail.com"}
+              </span>
+            </button>
+
+            {/* Copy Notification */}
+            {copied && (
+              <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-zinc-800 text-white px-3 py-1 rounded text-sm flex items-center animate-fade-in">
+                <Check size={14} className="mr-1 text-green-500" />
+                Email copied!
+              </div>
+            )}
+          </div>
 
           <div className="flex items-center space-x-4">
             <a

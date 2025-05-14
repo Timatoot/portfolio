@@ -1,11 +1,13 @@
 "use client"
 
+import type React from "react"
+
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
-import { Check, AlertCircle, Send, Mail, MessageSquare } from "lucide-react"
+import { Check, AlertCircle, Send, Mail, MessageSquare, Copy } from "lucide-react"
 import { sendContactEmail } from "@/actions/contact-form"
 
 const formSchema = z.object({
@@ -22,6 +24,7 @@ export default function Contact() {
   const [errorMessage, setErrorMessage] = useState<string>("")
   const [contactPreference, setContactPreference] = useState<"form" | "email">("form")
   const [email, setEmail] = useState("")
+  const [copied, setCopied] = useState(false)
 
   // Email obfuscation
   useEffect(() => {
@@ -30,6 +33,23 @@ export default function Contact() {
     const domain = "gmail.com"
     setEmail(`${username}@${domain}`)
   }, [])
+
+  const copyEmail = async (e: React.MouseEvent) => {
+    e.preventDefault()
+    if (!email) return
+
+    try {
+      await navigator.clipboard.writeText(email)
+      setCopied(true)
+
+      // Reset copied state after 2 seconds
+      setTimeout(() => {
+        setCopied(false)
+      }, 2000)
+    } catch (err) {
+      console.error("Failed to copy email: ", err)
+    }
+  }
 
   const {
     register,
@@ -273,26 +293,28 @@ export default function Contact() {
                 <div className="bg-zinc-800 p-8 rounded-lg border border-zinc-700 text-center">
                   <Mail size={48} className="mx-auto mb-4 text-pink-600" />
                   <h3 className="text-2xl font-semibold mb-4">Want to reach out directly?</h3>
-                  <p className="text-gray-300 mb-6">
-                    Feel free to send me an email and I'll get back to you as soon as possible.
-                  </p>
+                  <p className="text-gray-300 mb-6">Feel free to send me an email and I'll get back to you as soon as possible.</p>
 
-                  {/* Obfuscated Email */}
-                  <div className="inline-block bg-zinc-700 px-6 py-4 rounded-lg">
-                    <a
-                      href="#"
-                      onClick={(e) => {
-                        e.preventDefault()
-                        window.location.href = `mailto:${email}`
-                      }}
-                      className="text-xl font-medium text-white hover:text-pink-600 transition-colors flex items-center justify-center"
-                      aria-label="Email me"
+                  <div className="relative inline-block">
+                    <button
+                      onClick={copyEmail}
+                      className="bg-zinc-700 px-6 py-4 rounded-lg text-xl font-medium text-white hover:bg-zinc-600 transition-colors flex items-center justify-center group"
+                      aria-label="Copy email address"
                       data-email-username="tim.rostorhuiev"
                       data-email-domain="gmail.com"
                     >
                       <Mail size={20} className="mr-2" />
                       <span>{email || "tim.rostorhuiev" + String.fromCharCode(64) + "gmail.com"}</span>
-                    </a>
+                      <Copy size={16} className="ml-3 opacity-50 group-hover:opacity-100 transition-opacity" />
+                    </button>
+
+                    {/* Copy Notification */}
+                    {copied && (
+                      <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-zinc-700 text-white px-4 py-2 rounded flex items-center animate-fade-in">
+                        <Check size={16} className="mr-2 text-green-500" />
+                        Email copied to clipboard!
+                      </div>
+                    )}
                   </div>
 
                   <p className="mt-6 text-gray-400 text-sm">
