@@ -116,14 +116,6 @@ export default function Hero() {
               >
                 View my work
               </button>
-              <a
-                href="/tim_rostorhuiev_resume.pdf"
-                download
-                className="bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-full transition-colors flex items-center gap-2"
-              >
-                <FileDown size={18} />
-                Download Resume
-              </a>
             </motion.div>
           </motion.div>
           <motion.div
@@ -155,7 +147,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-20">
         <motion.div
           initial={{ opacity: 0 }}

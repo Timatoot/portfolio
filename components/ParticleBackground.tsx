@@ -23,7 +23,6 @@ export default function ParticleBackground({ mousePosition }: ParticleBackground
   const animationFrameRef = useRef<number>(0)
   const mouseRadiusRef = useRef(100)
 
-  // Colors that match the theme
   const colors = ["#e91e63", "#d81b60", "#c2185b", "#ad1457", "#880e4f"]
 
   // Initialize particles

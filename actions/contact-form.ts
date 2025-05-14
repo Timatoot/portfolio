@@ -56,7 +56,6 @@ ${validatedData.message}
       `,
     }
 
-    // Send email
     await transporter.sendMail(mailOptions)
 
     return { success: true, message: "Your message has been sent successfully!" }

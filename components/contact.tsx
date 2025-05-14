@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
-import { Check, AlertCircle, Send, Mail, Phone, MapPin, Github } from "lucide-react"
+import { Check, AlertCircle, Send } from "lucide-react"
 import { sendContactEmail } from "@/actions/contact-form"
 
 const formSchema = z.object({
@@ -37,14 +37,13 @@ export default function Contact() {
       const result = await sendContactEmail(data)
 
       if (result.success) {
+        setFormStatus("success")
+        reset()
 
-      setFormStatus("success")
-      reset()
-
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setFormStatus("idle")
-      }, 5000)
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setFormStatus("idle")
+        }, 5000)
       } else {
         setFormStatus("error")
         setErrorMessage(result.message)
@@ -81,95 +80,22 @@ export default function Contact() {
             Get In <span className="text-pink-600">Touch</span>
           </h2>
           <p className="max-w-2xl mx-auto text-gray-300">
-            Have a project in mind or want to collaborate? Feel free to reach out to me using the form below or through
-            my contact information.
+            Have a project in mind, want to collaborate or have a question? Feel free to reach out to me using the form below.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="flex justify-center">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
+            className="w-full max-w-xl"
           >
-            <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
-            <div className="space-y-6">
-              <div className="flex items-start">
-                <div className="bg-pink-600 p-3 rounded-full mr-4">
-                  <Mail size={20} />
-                </div>
-                <div>
-                  <h4 className="text-lg font-medium mb-1">Email</h4>
-                  <p className="text-gray-400">tim.rostorhuiev@gmail.com</p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <div className="bg-pink-600 p-3 rounded-full mr-4">
-                  <Phone size={20} />
-                </div>
-                <div>
-                  <h4 className="text-lg font-medium mb-1">Phone</h4>
-                  <p className="text-gray-400">+1 (905) 580-6624</p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <div className="bg-pink-600 p-3 rounded-full mr-4">
-                  <MapPin size={20} />
-                </div>
-                <div>
-                  <h4 className="text-lg font-medium mb-1">Location</h4>
-                  <p className="text-gray-400">Burlington, ON</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-8">
-              <h3 className="text-2xl font-semibold mb-6">Follow Me</h3>
-              <div className="flex space-x-4">
-                <a
-                  href="https://github.com/Timatoot"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-zinc-800 p-3 rounded-full hover:bg-pink-600 transition-colors flex items-center justify-center"
-                >
-                  <span className="sr-only">GitHub</span>
-                  <Github size={20} />
-                </a>
-                <a
-                  href="https://linkedin.com/in/timrostorhuiev"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-zinc-800 p-3 rounded-full hover:bg-pink-600 transition-colors flex items-center justify-center"
-                >
-                  <span className="sr-only">LinkedIn</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                    <rect x="2" y="9" width="4" height="12"></rect>
-                    <circle cx="4" cy="4" r="2"></circle>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="space-y-6 bg-zinc-800 p-8 rounded-lg border border-zinc-700"
+            >
               <div>
                 <label htmlFor="name" className="block mb-2 text-sm font-medium">
                   Your Name
@@ -177,8 +103,8 @@ export default function Contact() {
                 <input
                   type="text"
                   id="name"
-                  className={`w-full px-4 py-3 bg-zinc-800 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600 ${
-                    errors.name ? "border-red-500" : "border-zinc-700"
+                  className={`w-full px-4 py-3 bg-zinc-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600 ${
+                    errors.name ? "border-red-500" : "border-zinc-600"
                   }`}
                   placeholder="John Doe"
                   {...register("name")}
@@ -193,8 +119,8 @@ export default function Contact() {
                 <input
                   type="email"
                   id="email"
-                  className={`w-full px-4 py-3 bg-zinc-800 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600 ${
-                    errors.email ? "border-red-500" : "border-zinc-700"
+                  className={`w-full px-4 py-3 bg-zinc-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600 ${
+                    errors.email ? "border-red-500" : "border-zinc-600"
                   }`}
                   placeholder="john@example.com"
                   {...register("email")}
@@ -209,8 +135,8 @@ export default function Contact() {
                 <input
                   type="text"
                   id="subject"
-                  className={`w-full px-4 py-3 bg-zinc-800 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600 ${
-                    errors.subject ? "border-red-500" : "border-zinc-700"
+                  className={`w-full px-4 py-3 bg-zinc-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600 ${
+                    errors.subject ? "border-red-500" : "border-zinc-600"
                   }`}
                   placeholder="Project Inquiry"
                   {...register("subject")}
@@ -225,8 +151,8 @@ export default function Contact() {
                 <textarea
                   id="message"
                   rows={5}
-                  className={`w-full px-4 py-3 bg-zinc-800 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600 ${
-                    errors.message ? "border-red-500" : "border-zinc-700"
+                  className={`w-full px-4 py-3 bg-zinc-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600 ${
+                    errors.message ? "border-red-500" : "border-zinc-600"
                   }`}
                   placeholder="Hello, I'd like to talk about..."
                   {...register("message")}

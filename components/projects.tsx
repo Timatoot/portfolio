@@ -111,7 +111,7 @@ export default function Projects() {
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 } gap-8 items-center`}
               >
-                {/* Project Image with Glow Effect */}
+
                 <div className="w-full md:w-1/2 relative group">
                   <div className="absolute -inset-0.5 bg-pink-600 rounded-lg blur opacity-30 group-hover:opacity-70 transition duration-1000"></div>
                   <div className="relative bg-zinc-900 rounded-lg overflow-hidden aspect-video">
@@ -165,7 +165,6 @@ export default function Projects() {
                 </div>
               </div>
 
-              {/* Decorative Elements */}
               {index % 2 === 0 ? (
                 <div className="hidden md:block absolute -top-10 -left-10 w-20 h-20 border-t-2 border-l-2 border-pink-600 opacity-30"></div>
               ) : (

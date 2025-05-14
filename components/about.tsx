@@ -75,7 +75,7 @@ export default function About() {
 
   return (
     <section id="about" className="py-20 bg-zinc-900 relative overflow-hidden">
-      {/* Decorative Elements */}
+
       <div className="absolute top-0 left-0 w-64 h-64 bg-pink-600 rounded-full filter blur-[120px] opacity-10"></div>
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-pink-600 rounded-full filter blur-[150px] opacity-10"></div>
 
@@ -121,7 +121,7 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Right Column - Hobbies & Interests with Visual Flair */}
+          {/* Right Column - Hobbies & Interests */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -158,7 +158,7 @@ export default function About() {
           </motion.div>
         </div>
 
-        {/* Personal Statement with Animation */}
+        {/* Personal Statement */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -177,43 +177,6 @@ export default function About() {
             time with friends, and unwinding with games. I'm always excited to learn, take on new challenges, 
             and connect with people.`}
           </p>
-        </motion.div>
-
-        {/* Resume Download Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="mt-8 flex justify-center"
-        >
-          <a
-            href="/tim_rostorhuiev_resume.pdf"
-            download
-            className="flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 px-6 py-3 rounded-lg border border-zinc-700 transition-colors group"
-          >
-            <div className="w-10 h-10 rounded-full bg-pink-600 flex items-center justify-center group-hover:bg-pink-700 transition-colors">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
-              </svg>
-            </div>
-            <div className="text-left">
-              <p className="font-medium">Download My Resume</p>
-              <p className="text-sm text-gray-400">Get a copy of my detailed CV</p>
-            </div>
-          </a>
         </motion.div>
       </div>
     </section>
