@@ -8,7 +8,7 @@ import ParticleBackground from "./ParticleBackground"
 
 export default function Hero() {
   const [text] = useTypewriter({
-    words: ["Software Engineer", "Robotics Programmer", "Web Developer"],
+    words: ["Software Engineer", "Security Researcher", "Web Developer"],
     loop: true,
     delaySpeed: 2000,
   })
